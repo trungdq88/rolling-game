@@ -1,35 +1,40 @@
 <html>
 	<head>
-		<link rel="stylesheet" href="css/flipclock.css">
-
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-		<script src="js/flipclock/libs/base.js"></script>
-		<script src="js/flipclock/flipclock.js"></script>
-		<script src="js/flipclock/faces/dailycounter.js"></script>		
+		<meta charset="UTF-8">
 	</head>
-	<body style="background-color:#db4843;background-image:url('css/bg.png'); background-repeat:no-repeat;background-position:center top; align:center">
-		<div class="clock" style="margin:2em; position:absolute; top:180px; width: 620px;left: 50%;margin-left: -310px;"></div>
+	<body style="background-color:#db4843;background-image:url('css/bg_santa.png'); background-repeat:no-repeat;background-position:center top; align:center">
+		<div id="dvName" class="clock" style=" position:absolute; top:250px; width: 100%;left:0px; color:white; font-size: 120px; text-align:center">
+			WHO? WHO?
+		</div>
 		
 		<script type="text/javascript">
-			var clock;
+			var arrayName = ["Trung","Tú", "Kiệt", "Hiếu", "Danh"];
+			var isRunning = true;
+			var timeInterval;
+			var i;
+			$(window).keypress(function(e) {
+			    if (e.which === 32) {
+			    	isRunning = !isRunning;
+			    	if (isRunning) {
+			    		clearInterval(timeInterval);
+			    		arrayName.splice(i-1,1);
+			    	}else{
+						i = 0;
+						timeInterval = setInterval(function(){
+							$("#dvName").html(arrayName[i]);
+							if (i < arrayName.length) {
+								i++;
+							}else{
+								i = 0
+							};
+						},90);	
+			    	};
+			    }
+			});
 
 			$(document).ready(function() {
-
-				// Grab the current date
-				var currentDate = new Date();
-
-				// xmas day
-				var xmasDate  = new Date("12/24/2013");
-
-				// Calculate the difference in seconds between the future and current date
-				var diff = xmasDate.getTime() / 1000 - currentDate.getTime() / 1000;
-
-				// Instantiate a coutdown FlipClock
-				clock = $('.clock').FlipClock(diff, {
-					clockFace: 'DailyCounter',
-					countdown: true
-				});
+				 // clearInterval()
 			});
 		</script>
 

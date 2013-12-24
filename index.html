@@ -7,39 +7,42 @@
 		<div id="dvName" class="clock" style=" position:absolute; top:250px; width: 100%;left:0px; color:white; font-size: 120px; text-align:center">
 			WHO? WHO?
 		</div>
+		<a href="" id="aRetry"style=" position:absolute; top:430px; width: 100%;left:0px; color:white;text-align:center">Retry</>
 		
 		<script type="text/javascript">
 			var arrayName = ["Duy Thanh xinh đẹp",
-			"Nhí xinh đẹp", 
-			"Kim Hiếu", 
-			"Đình Khôi", 
-			"Phước Hải",
-			"Khoa Đào",
-			"Chu Kiệt",
-			"Phú Hải",
-			"Hoàng Việt",
-			"Hải An",
-			"Tú 2 *beep*",
-			"Thương 3 Sừng",
-			"Mai Loan",
-			"Minh Danh",
-			"Nguyễn Vinh",
-			"Chị Minh",
-			"Harmony Lee",
-			"Thái Sơn",
-			"Đức Vinh",
-			"Xuân Quang",
-			"Hải Phan",
-			"Thọ Chém",
-			"Duy Thanh"];
+                 "Nhí xinh đẹp",
+                 "Kim Hiếu",
+                 "Đình Khôi",
+                 "Phước Hải",
+                 "Khoa Đào",
+                 "Chu Kiệt",
+                 "Phú Hải",
+                 "Hoàng Việt",
+                 "Hải An",
+                 "Tú 2 *beep*",
+                 "Thương 3 Sừng",
+                 "Mai Loan",
+                 "Minh Danh",
+                 "Nguyễn Vinh",
+                 "Chị Minh",
+                 "Harmony Lee",
+                 "Thái Sơn",
+                 "Đức Vinh",
+                 "Xuân Quang",
+                 "Hải Phan",
+                 "Thọ Chém",
+                 "Duy Thanh"];
 			var isRunning = true;
 			var timeInterval;
 			var i;
+			var lastRemovedItem;
 			$(window).keypress(function(e) {
 			    if (e.which === 32) {
 			    	isRunning = !isRunning;
 			    	if (isRunning) {
 			    		clearInterval(timeInterval);
+			    		lastRemovedItem = arrayName[i-1];
 			    		arrayName.splice(i-1,1);
 			    	}else{
 						i = 0;
@@ -70,6 +73,11 @@
 						};
 					},90);	
 		    	};
+			});
+			$("#aRetry").click(function(){
+				arrayName.push(lastRemovedItem); 
+				$("#dvName").click();
+				return false;
 			});
 			$(document).ready(function() {
 				 // clearInterval()

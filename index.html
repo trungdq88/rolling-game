@@ -54,7 +54,23 @@
 			    	};
 			    }
 			});
-
+			$("#dvName").click(function(){
+				isRunning = !isRunning;
+		    	if (isRunning) {
+		    		clearInterval(timeInterval);
+		    		arrayName.splice(i-1,1);
+		    	}else{
+					i = 0;
+					timeInterval = setInterval(function(){
+						$("#dvName").html(arrayName[i]);
+						if (i < arrayName.length) {
+							i++;
+						}else{
+							i = 0
+						};
+					},90);	
+		    	};
+			});
 			$(document).ready(function() {
 				 // clearInterval()
 			});

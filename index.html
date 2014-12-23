@@ -3,36 +3,56 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<meta charset="UTF-8">
 	</head>
-	<body style="background-color:#db4843;background-image:url('css/bg_santa.png'); background-repeat:no-repeat;background-position:center top; align:center">
+	<body style="background-color:#dd4944;background-image:url('css/bg_santa.png'); background-repeat:no-repeat;background-position:center top; align:center">
 		<div id="dvName" class="clock" style=" position:absolute; top:250px; width: 100%;left:0px; color:white; font-size: 120px; text-align:center">
 			WHO? WHO?
 		</div>
 		<a href="" id="aRetry"style=" position:absolute; top:430px; width: 100%;left:0px; color:white;text-align:center">Retry</>
-		
+
 		<script type="text/javascript">
-			var arrayName = ["Duy Thanh xinh đẹp",
-                 "Nhí xinh đẹp",
-                 "Kim Hiếu",
-                 "Đình Khôi",
-                 "Phước Hải",
-                 "Khoa Đào",
-                 "Chu Kiệt",
-                 "Phú Hải",
-                 "Hoàng Việt",
-                 "Hải An",
-                 "Tú 2 *beep*",
-                 "Thương 3 Sừng",
-                 "Mai Loan",
-                 "Minh Danh",
-                 "Nguyễn Vinh",
-                 "Chị Minh",
-                 "Harmony Lee",
-                 "Thái Sơn",
-                 "Đức Vinh FA",
-                 "Xuân Quang",
-                 "Hải Phan",
-                 "Thọ Chém",
-                 "Thanh Chém gió"];
+			var arrayName = ["Nguyễn Thế Luân",
+                      "Bùi Hải An",
+                      "Nguyễn Phú Hải",
+                      "Đoàn Trần Thái Sơn",
+                      "Nguyễn Xuân Quang",
+                      "Duy Thanh Xinh Đẹp",
+                      "Võ Hoàng Chu Kiệt",
+                      "Vũ Đình Khôi",
+                      "Trần Thị Minh",
+                      "Bùi Phạm Thanh Tú",
+                      "Bạch Sỹ Đức Vinh",
+                      "Nguyễn Hoàng Việt",
+                      "Kiều Mỹ Hồng",
+                      "Trương Vĩnh Thọ",
+                      "Vương Văn Gặp",
+                      "Đỗ Thị Mai Loan",
+                      "Võ Anh Duy",
+                      "Lương Tất Trung",
+                      "Lê Thành Hưng",
+                      "Phạm Bá Thọ",
+                      "Đào Kiều Anh Khoa",
+                      "Lê Thị Đoan Trang",
+                      "Nguyễn Hiển Vinh",
+                      "Null lùn",
+                      "Tôn Thất Vinh",
+                      "Cao Thị Thúy Di",
+                      "Lê Quang Hải",
+                      "Phan Quang Hưng",
+                      "Lê Thành Quang",
+                      "Hoàng Minh Hoà",
+                      "Phạm Văn Tiến",
+                      "Nguyễn Hoàng Anh",
+                      "Trần Duy Thanh",
+                      "Đoàn Trọng Cường",
+                      "Lê Trần Trúc Ngân",
+                      "Lê Hoàng Trang",
+                      "Trần Lê Anh Minh",
+                      "Trần Ngọc Nghi",
+                      "Nguyễn Vũ Minh Quân",
+                      "Huỳnh Thị Như Phương",
+                      "Trần Thị Lan Anh",
+                      "Nguyễn Hồng Đức",
+                      "Nguyễn Minh Tuấn"];
 			var isRunning = true;
 			var timeInterval;
 			var i;
@@ -53,7 +73,7 @@
 							}else{
 								i = 0
 							};
-						},90);	
+						},90);
 			    	};
 			    }
 			});
@@ -71,11 +91,11 @@
 						}else{
 							i = 0
 						};
-					},90);	
+					},90);
 		    	};
 			});
 			$("#aRetry").click(function(){
-				arrayName.push(lastRemovedItem); 
+				arrayName.push(lastRemovedItem);
 				$("#dvName").click();
 				return false;
 			});

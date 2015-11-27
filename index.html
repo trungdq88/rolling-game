@@ -2,106 +2,68 @@
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<meta charset="UTF-8">
+        <style>
+            body {
+            background-color:#493D6B;
+            background-image:url('img/bg.png');
+            background-repeat:no-repeat;
+            background-position:center top;
+            text-align:center;
+            background-size: cover;
+            } 
+            #dvName {
+                 position:absolute;
+                 top:250px;
+                 width: 100%;
+                 left:0px;
+                 color:white;
+                 font-size: 120px;
+                 text-align:center;
+            }         
+            #dvName img {
+                height: 300px;
+            }
+        </style>
 	</head>
-	<body style="background-color:#dd4944;background-image:url('css/bg_santa.png'); background-repeat:no-repeat;background-position:center top; align:center">
-		<div id="dvName" class="clock" style=" position:absolute; top:250px; width: 100%;left:0px; color:white; font-size: 120px; text-align:center">
+	<body>
+        <div id="dvName" class="clock"> 
 			WHO? WHO?
 		</div>
-		<a href="" id="aRetry"style=" position:absolute; top:430px; width: 100%;left:0px; color:white;text-align:center">Retry</>
-
 		<script type="text/javascript">
-			var arrayName = ["Arnav",
-                      "Anh Luân",
-                      "Ba Annie",
-                      "Anh Hải",
-                      "Đoàn Trần Thái Sơn",
-                      "Nguyễn Xuân Quang",
-                      "Duy Thanh Xinh Đẹp",
-                      "Võ Hoàng Chu Kiệt",
-                      "o0KhoiClub0o",
-                      "Minh mặc váy",
-                      "Tú Bùi",
-                      "Vinh đẹp trai",
-                      "Nguyễn Hoàng Việt",
-                      "Chị Hồng",
-                      "Trương Vĩnh Thọ",
-                      "Anh Gặp",
-                      "Mai Loan",
-                      "Thánh ngủ",
-                      "Trung",
-                      "Lê Thành Hưng",
-                      "Thorin",
-                      "Độc nhất QC",
-                      "Lê Thị Đoan Trang",
-                      "Vinh đô",
-                      "Null lùn",
-                      "Tôn Thất Vinh",
-                      "Cao Thị Thúy Di",
-                      "Lê Quang Hải",
-                      "Thánh JS",
-                      "Lê Thành Quang",
-                      "Hoàng Minh Hoà",
-                      "Phạm Văn Tiến",
-                      "Baymax",
-                      "Trần Duy Thanh",
-                      "Đoàn Trọng Cường",
-                      "Lê Trần Trúc Ngân",
-                      "Lê Hoàng Trang",
-                      "Trần Lê Anh Minh",
-                      "Gấu của thánh JS",
-                      "Nguyễn Vũ Minh Quân",
-                      "Mẹ Annie",
-                      "Trần Thị Lan Anh",
-                      "Nguyễn Hồng Đức",
-                      "Nguyễn Minh Tuấn"];
+			var arrayName = [
+               'img/gift1.png', 
+               'img/gift2.png', 
+               'img/gift3.png', 
+               'img/gift4.png',
+               'img/gift5.png' 
+            ];
 			var isRunning = true;
-			var timeInterval;
+			var timer;
 			var i;
-			var lastRemovedItem;
-			$(window).keypress(function(e) {
-			    if (e.which === 32) {
+            var interval = 90;
+            function draw() {
 			    	isRunning = !isRunning;
 			    	if (isRunning) {
-			    		clearInterval(timeInterval);
-			    		lastRemovedItem = arrayName[i-1];
-			    		arrayName.splice(i-1,1);
+			    		clearInterval(timer);
 			    	}else{
 						i = 0;
-						timeInterval = setInterval(function(){
-							$("#dvName").html(arrayName[i]);
-							if (i < arrayName.length) {
+						timer = setInterval(function(){
+                                $("#dvName").html('<img src="'+arrayName[i]+'"/>');
+							if (i < arrayName.length - 1) {
 								i++;
 							}else{
 								i = 0
 							};
-						},90);
+						}, interval);
 			    	};
+            }
+			$(window).keypress(function(e) {
+			    if (e.which === 32) {
+                    draw();
 			    }
 			});
 			$("#dvName").click(function(){
-				isRunning = !isRunning;
-		    	if (isRunning) {
-		    		clearInterval(timeInterval);
-		    		arrayName.splice(i-1,1);
-		    	}else{
-					i = 0;
-					timeInterval = setInterval(function(){
-						$("#dvName").html(arrayName[i]);
-						if (i < arrayName.length) {
-							i++;
-						}else{
-							i = 0
-						};
-					},90);
-		    	};
-			});
-			$("#aRetry").click(function(){
-				arrayName.push(lastRemovedItem);
-				$("#dvName").click();
-				return false;
-			});
-			$(document).ready(function() {
-				 // clearInterval()
+                draw();
 			});
 		</script>
 

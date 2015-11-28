@@ -26,7 +26,46 @@ function setUp() {
  * @return integer : index of element from $holders array
  */ 
 function getRandomResult() {
-    return (Math.floor(Math.random() * $holders.length) + 1);
+    if ($holders.length === 0) return 0;
+    // If one if the "data-rate" attributes is not available, use default rate (equally rate for all items)
+    if (!$holders[0].dataset.rate) {
+        return (Math.floor(Math.random() * $holders.length) + 1);
+    } else {
+        // Return by rate of each item
+        // Create an array with number of item of each holder is exactly it's rate
+        var arr = [];
+        $holders.each(function (index, $holder) {
+            var rate = Number($holder.dataset.rate);
+            for (var i = 0; i < rate * 100; i++) {
+                arr.push(index);
+            }
+        });
+        // Random an item from that array, it's the result we want
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+}
+
+/**
+ * Test the random function
+ * Check console for result, compare with the number you put in data-rate attribute
+ * Test result should looks like this:
+ * Pair:  0.3  :  0.293
+ * Pair:  0.25  :  0.24646
+ * Pair:  0.033  :  0.0388
+ * Pair:  0.333  :  0.33374
+ * Pair:  0.083  :  0.088
+ */
+function test_getRandomResult() {
+    var result = {};
+    for (var i = 0; i < 100000; i++) {
+        var target = getRandomResult();
+        result[target] = result[target] || 0;
+        ++result[target];
+    }
+    // Print result to console
+    for (var i = 0; i < $holders.length; i++) {
+        console.log('Pair: ', $holders[i].dataset.rate, ' : ', result[i] / 100000);
+    }
 }
 
 /**
@@ -37,7 +76,10 @@ function draw() {
     if (waitting) return;
 
     // The lucky number
-    var next = 360*5 + deg * getRandomResult(); 
+    var result = getRandomResult();
+    console.log(result);
+    var next = 360*5 - deg * result; 
+    console.log('next: ' + next);
 
     // Flag mark state as rolling
     waitting = true;

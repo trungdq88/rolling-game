@@ -70,75 +70,7 @@
 			    <img src="img/gift5.png"/>
             </div>
 		</div>
-		<script type="text/javascript">
-			var isRunning = true;
-            var waitTime = 3;
-            var $container = $('#dvName');
-            var $holders = $('.img-holder');
-            var deg = 0;
-            var waitting = false;
-            var lastPosition = 0;
-            function setUp() {
-                $holders.each(function (i) {
-                    var $img = $(this);
-                    deg = 360 / $holders.length
-                    $img.css('transform', 'rotateZ(' + (deg * i) + 'deg)');
-                });
-            }
-            function draw() {
-                if (waitting) return;
-                var next = 360*5 + deg * (Math.floor(Math.random() * $holders.length) + 1);
-                isRunning = !isRunning;
-                waitting = true;
-                if (isRunning) {
-                    // Stop roll
-                    
-                    // Reset roll position
-                    $container.css('transform', 'rotateZ(0deg)');
-                    $container.css('transition', 'none');
-                    $container[0].offsetHeight;
-
-                    // Prepare stop roll
-                    $container.css('transition', 'transform ' + waitTime + 's cubic-bezier(0, 0, 0.6, 1.15)');
-                    $container.css('transform', 'rotateZ(' + next + 'deg) ');
-
-                    // Stop
-                    setTimeout(function () {
-                        lastPosition = next;
-                        waitting = false;    
-                        $container.css('transition', 'none');
-                    }, waitTime * 1000);
-                } else {
-                    // Start roll
-
-                    // Reset roll position
-                    $container.css('transform', 'rotateZ(' + lastPosition + 'deg) ');
-                    $container.css('transition', 'none');
-                    $container[0].offsetHeight;
-
-                    // Roll start up
-                    $container.css('transition', 'transform ' + waitTime + 's ease-in');
-                    $container.css('transform', 'rotateZ(' + (lastPosition + waitTime * 1000) + 'deg) ');
-
-                    // Fast roll forever
-                    setTimeout(function () {
-                        waitting = false;    
-                        $container.css('transition', 'transform 100s linear');
-                        $container.css('transform', 'rotateZ(120000deg) ');
-                    }, waitTime * 1000);
-                }
-            }
-			$(window).keypress(function(e) {
-			    if (e.which === 32) {
-                    e.preventDefault();
-                    draw();
-			    }
-			});
-			$("#dvName").click(function(){
-                draw();
-			});
-            $(setUp);
-		</script>
         </div>
+        <script src="js/main.js"></script>
 	</body>
 </html>

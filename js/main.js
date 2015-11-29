@@ -77,9 +77,7 @@ function draw() {
 
     // The lucky number
     var result = getRandomResult();
-    console.log(result);
     var next = 360*5 - deg * result; 
-    console.log('next: ' + next);
 
     // Flag mark state as rolling
     waitting = true;
